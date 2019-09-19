@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+* {
+  box-sizing: border-box;
+}
+.container
+{
+	height:50px;
+	width:90%;
+	border: 1px solid #f1f1f1;
+	margin-left:5%;
+}
+
+
+.avatar {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+}
+
+.avatar:hover{
+border-radius: 5px; 
+-moz-border-radius: 5px; 
+-webkit-border-radius: 5px; 
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.alignright{
+	float:right;
+}
+.logo{
+float:left;
+width:200px;
+height:40px;
+}
+
+.dropbtn {
+  background-color: inherit;
+  color: white;
+  padding: 5px;
+  width:30px;
+  height:45px;
+  margin-left:-2px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: inherit;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+
+.container2
+{
+	height:50px;
+	width:90%;
+	border: 1px solid #f1f1f1;
+	margin-left:5%;
+	margin-top:5%;
+}
+
+  
+  .tablink {
+  background-color: #efefef;
+  color: black;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #cfcfcf;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+.sub{
+padding:2px;
+margin-top:20px;
+color:white;
+width:100px;
+height:40px;
+opacity:0.9;
+}
+.sub:hover{
+opacity:1.0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<img src="SastraLogo.png" class="logo" >
+	<div class="alignright">
+		<div class="tooltip">
+			<img src="540740.jpg" alt="avatar" class="avatar" onclick="myfun()" >
+			<span class="tooltiptext">hey there</span>
+		</div>
+		<div class="dropdown">
+  			<button onclick="myFunction()" class="dropbtn"> <i class="down"></i></button>
+  			<div id="myDropdown" class="dropdown-content">
+    			<a href="#home">Settings</a>
+    			<a href="file:///C:/Users/saich/eclipse-workspace/Script_project/LoginForm.html">Logout</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container2">
+<button class="tablink" onclick="openPage('room-cle', this, 'red')">Room-cleaning</button>
+<button class="tablink" onclick="openPage('room-ele', this, 'green')" id="defaultOpen">Room-electronic</button>
+<button class="tablink" onclick="openPage('surrounding', this, 'blue')">Surroundings</button>
+<button class="tablink" onclick="openPage('other', this, 'orange')">Other</button>
+
+
+<div id="room-cle" class="tabcontent">
+  <h3>Room-cleaning</h3>
+  <p>Room cleaning requests are placed here</p>
+  <textarea rows="10" cols="100" style="font-size:20px"></textarea>
+  <br>
+    <button class="sub" type="button" style="background-color:red"><b>Submit</b></button>
+</div>
+
+<div id="room-ele" class="tabcontent">
+  <h3>Room-electronics</h3>
+  <p>Room electrical problems are placed here</p> 
+    <textarea rows="10" cols="100" style="font-size:20px"></textarea>
+  <br>
+    <button class="sub" type="button" style="background-color:green"><b>Submit</b></button>
+  
+</div>
+
+<div id="surrounding" class="tabcontent">
+  <h3>Surroundings</h3>
+  <p>Complaints about your surrounding problems are placed here</p>
+    <textarea rows="10" cols="100" style="font-size:20px"></textarea>
+  <br>
+    <button class="sub" type="button" style="background-color:blue"><b>Submit</b></button>
+  
+</div>
+
+<div id="other" class="tabcontent">
+  <h3>Other</h3>
+  <p>Any other problems are placed here</p>
+    <textarea rows="10" cols="100" style="font-size:20px"></textarea>
+  <br>
+    <button class="sub" type="button" style="background-color:orange"><b>Submit</b></button>
+  
+</div>
+</div>
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function myFunction2() {
+	  document.getElementById("myDropdown2").classList.toggle("show2");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+	  if (!event.target.matches('.dropbtn2')) {
+	    var dropdowns = document.getElementsByClassName("dropdown2-content");
+	    var i;
+	    for (i = 0; i < dropdowns.length; i++) {
+	      var openDropdown = dropdowns[i];
+	      if (openDropdown.classList.contains('show2')) {
+	        openDropdown.classList.remove('show2');
+	      }
+	    }
+	  }
+	}
+	
+	
+	function openPage(pageName,elmnt,color) {
+		  var i, tabcontent, tablinks;
+		  tabcontent = document.getElementsByClassName("tabcontent");
+		  for (i = 0; i < tabcontent.length; i++) {
+		    tabcontent[i].style.display = "none";
+		  }
+		  tablinks = document.getElementsByClassName("tablink");
+		  for (i = 0; i < tablinks.length; i++) {
+		    tablinks[i].style.backgroundColor = "";
+		  }
+		  document.getElementById(pageName).style.display = "block";
+		  elmnt.style.backgroundColor = color;
+		}
+
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>
