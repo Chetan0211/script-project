@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container2
+{
+	height:inherit;
+	width:90%;
+	border: 1px solid #f1f1f1;
+	margin-left:5%;
+	margin-top:5%;
+}
+.checked {
+  color: orange;
+}
+.checkedin {
+  color: green;
+}
+.fa{
+display:inline-block;
+font:normal normal normal 14px/1 FontAwesome;
+font-size:25px;
+text-rendering:auto;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+}
+.fa-star:before{content:"\f006"}
+.fa-star-c:before{content:"\f005"}
+
+.heading {
+  font-size: 25px;
+  margin-right: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top:10px;
+}
+
+.middle {
+  margin-top:10px;
+  float: left;
+  width: 70%;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 0; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 0; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 0; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 0; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 0; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  .right {
+    display: none;
+  }
+}
+
+.container3
+{
+	height:inherit;
+	width:90%;
+	border: 1px solid #f1f1f1;
+	margin-left:5%;
+	margin-top:-10%;
+}
+
+#mydiv2{
+visibility:hidden;
+height:inherit;
+}
+
+#text1{
+height:inherit;
+visibility:hidden;}
+
+.comments{
+width:15%;
+height:5%;
+padding:5px;
+margin-top:3%;
+background-color:#33cc33; 
+
+}
+
+#after_submit{
+height:inherit;
+visibility:hidden;
+}
+
+</style>
+</head>
+<body>
+<div id="mydiv1" class="container2">
+	<h2>Star Rating for mess</h2>
+<span class="fa fa-star" id="1" onmouseover="starin(1)" onmouseout="starout(5)"  onclick="star(1)"></span>
+<span class="fa fa-star" id="2" onmouseover="starin(2)" onmouseout="starout(5)"  onclick="star(2)"></span>
+<span class="fa fa-star" id="3" onmouseover="starin(3)" onmouseout="starout(5)"  onclick="star(3)"></span>
+<span class="fa fa-star" id="4" onmouseover="starin(4)" onmouseout="starout(5)"  onclick="star(4)"></span>
+<span class="fa fa-star" id="5" onmouseover="starin(5)" onmouseout="starout(5)"  onclick="star(5)"></span>
+</div>
+
+<div id="mydiv2"  class="container3" >
+<p><span id="per"></span>4.1 average based on <span id="total">254</span> reviews.</p>
+<hr style="border:3px solid #f1f1f1">
+
+<div class="row">
+  <div class="side">
+    <div>5 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div id="5star" class="bar-5"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div id="5s">150</div>
+  </div>
+  <div class="side">
+    <div >4 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div id="4star" class="bar-4"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div id="4s">63</div>
+  </div>
+  <div class="side">
+    <div>3 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div id="3star" class="bar-3"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div id="3s">15</div>
+  </div>
+  <div class="side">
+    <div>2 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div id="2star" class="bar-2"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div id="2s">6</div>
+  </div>
+  <div class="side">
+    <div>1 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div id="1star" class="bar-1"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div id="1s">20</div>
+  </div>
+</div>
+<div id="submit">
+<button class="comments" onclick="comments()"><b>Comments</b></button>
+</div>
+<span id="after_submit" style="border-top:-3%;"><b>Sucessfully submitted</b></span>
+<div id="text1" style="border-top:-3%;">
+<textarea rows="10" cols="50" style="font-size:20px"></textarea>
+<br>
+<button class="comments" onclick="submit()"><b>Submit</b></button>
+</div>
+</div>
+
+<script>
+function starin(x)
+{
+	for(var i=1;i<=x;i++)
+		{
+			document.getElementById(i).className="fa fa-star-c checkedin";
+		}
+}
+function star(x)
+{
+	for(var i=1;i<=x;i++)
+		{
+			document.getElementById(i).className="fa fa-star-c checked";
+		}
+	var y = document.getElementById("mydiv1");
+		y.style.visibility="hidden";
+		var x = document.getElementById("mydiv2");
+		x.style.visibility="visible";
+}
+function starout(x)
+{
+	for(var i=1;i<=x;i++)
+	{
+		document.getElementById(i).className="fa fa-star";
+	}
+}
+
+function comments()
+{
+	var x=document.getElementById("text1");
+	x.style.visibility="visible";
+	var y=document.getElementById("submit");
+	y.style.visibility="hidden";
+}
+function submit()
+{
+	
+	var x=document.getElementById("text1");
+	x.style.visibility="hidden";
+	var z=document.getElementById("after_submit");
+	z.style.visibility="visible";
+	
+}
+
+var s5= document.getElementById("5s").innerHTML;
+var tot=document.getElementById("total").innerHTML;
+var per_5=(s5/tot)*100;
+var fin5=per_5+"%";
+document.getElementById("5star").style.width=fin5;
+
+var s4= document.getElementById("4s").innerHTML;
+var per_4=(s4/tot)*100;
+var fin4=per_4+"%";
+document.getElementById("4star").style.width=fin4;
+
+var s3= document.getElementById("3s").innerHTML;
+var per_3=(s3/tot)*100;
+var fin3=per_3+"%";
+document.getElementById("3star").style.width=fin3;
+
+var s2= document.getElementById("2s").innerHTML;
+var per_2=(s2/tot)*100;
+var fin2=per_2+"%";
+document.getElementById("2star").style.width=fin2;
+
+var s1= document.getElementById("1s").innerHTML;
+var per_1=(s1/tot)*100;
+var fin1=per_1+"%";
+document.getElementById("1star").style.width=fin1;
+
+var p=((s5*5)+(s4*4)+(s3*3)+(s2*2)+(s1*1))/tot;
+
+document.getElementById("per").innerHTML=Number.parseFloat(p).toFixed(1);
+
+</script>
+</body>
+</html>
